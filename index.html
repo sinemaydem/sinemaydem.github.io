@@ -77,6 +77,8 @@
   .site h3 { margin: 0 0 4px; font-size: 18px; }
   .site p { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; flex: 1; }
   .site.wide { grid-column: 1 / -1; }
+  .site .pair { display: grid; grid-template-columns: 1fr 1fr; }
+  .site .pair img + img { border-left: 1px solid var(--line); }
 
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
@@ -149,16 +151,15 @@
           <ul>
             <li><b>Canlı takip ve devriye:</b> nöbetteki görevlilerin harita üzerinde konumu, QR kontrol noktaları, sıra ve konum (geofence) doğrulaması, otomatik tur planlama, internet yokken cihazda okutma kuyruğu</li>
             <li><b>Finans:</b> aidat tahakkuku ve tahsilatı, borçlu daire takibi, dekont onayı, kasa ve banka özeti</li>
-            <li><b>Eğitim ve tahsilat:</b> öğrenci kaydı, taksit ve borç takibi, ders programı, eğitmen hak edişi, otomatik e-Arşiv fatura</li>
             <li><b>Site yaşamı:</b> talepler, ziyaretçi ve kargo, rezervasyon, anketler, hedefli duyurular ve push bildirimleri</li>
             <li><b>Güvenlik:</b> izin tabanlı roller, KVKK kapsamında şifreli kişisel veri, şirketler arası veri izolasyonu</li>
           </ul>
         </div>
         <div class="shots">
-          <img class="main" src="img/nexus-canli-takip.jpg" alt="Alo Nexus yönetim paneli: canlı takip haritası">
+          <img class="main" src="img/site-nexus-light.jpg" alt="alonexus.com ana sayfa">
           <div class="thumbs">
+            <img src="img/nexus-canli-takip.jpg" alt="Alo Nexus yönetim paneli: canlı takip haritası">
             <img src="img/nexus-ozet.jpg" alt="Alo Nexus yönetim paneli: özet ekranı">
-            <img src="img/site-nexus.jpg" alt="alonexus.com ana sayfa">
           </div>
           <div class="note">Panel görüntüleri demo sitesinden alınmıştır.</div>
         </div>
@@ -185,9 +186,9 @@
           <p>Yetki kararları arayüzde değil veritabanında veriliyor. Biri API'ye doğrudan istek atsa bile başka şirketin verisini göremez; 4 rollü yetki modeli otomatik testlerle doğrulanıyor.</p>
         </div>
         <div class="shots">
-          <img class="main" src="img/soji-kanban.jpg" alt="soji proje panosu (Kanban)">
+          <img class="main" src="img/soji-dashboard.jpg" alt="soji giriş ekranı: Bugün">
           <div class="thumbs">
-            <img src="img/soji-dashboard.jpg" alt="soji günlük dashboard">
+            <img src="img/soji-kanban.jpg" alt="soji proje panosu (Kanban)">
             <img src="img/soji-weekly.jpg" alt="soji haftalık iş planı">
           </div>
           <div class="note">Ekran görüntüleri kurgusal demo verisiyle alınmıştır.</div>
@@ -226,6 +227,14 @@
     <p class="section-sub">Tasarım, geliştirme, teknik SEO ve yapay zeka aramaları için içerik optimizasyonu.</p>
     <div class="sites">
       <div class="site">
+        <img src="img/site-nexus-light.jpg" alt="alonexus.com ana sayfa">
+        <div class="in">
+          <h3>alonexus.com</h3>
+          <p>Alo Nexus ürün sitesi: güvenlik ve yaşam uygulamalarının ve yönetim panelinin tanıtımı, demo talep akışı.</p>
+          <a class="live" href="https://alonexus.com" target="_blank" rel="noopener">Siteyi aç ↗</a>
+        </div>
+      </div>
+      <div class="site">
         <img src="img/site-alogrup.jpg" alt="alogrup.com ana sayfa">
         <div class="in">
           <h3>alogrup.com</h3>
@@ -242,25 +251,21 @@
         </div>
       </div>
       <div class="site">
-        <img src="img/site-nexus.jpg" alt="alonexus.com ana sayfa">
+        <img src="img/site-bulent.jpg" alt="bulentaydemir.com ana sayfa">
         <div class="in">
-          <h3>alonexus.com</h3>
-          <p>Alo Nexus ürün sitesi: güvenlik ve yaşam uygulamalarının ve yönetim panelinin tanıtımı, demo talep akışı.</p>
-          <a class="live" href="https://alonexus.com" target="_blank" rel="noopener">Siteyi aç ↗</a>
-        </div>
-      </div>
-      <div class="site">
-        <img src="img/site-bulent.jpg" alt="Prof. Dr. Bülent Aydemir akademik portfolyo sitesi">
-        <div class="in">
-          <h3>Akademik portfolyo · Prof. Dr. Bülent Aydemir</h3>
-          <p>İki dilli (TR/EN), yönetim panelli akademik site: yayınlar, dersler, seminerler ve şifreli ders notları. Güvenli giriş, hız sınırı ve süreli dosya bağlantılarıyla.</p>
-          <a class="live" href="https://bulentaydemir.vercel.app" target="_blank" rel="noopener">Siteyi aç ↗</a>
+          <h3>bulentaydemir.com</h3>
+          <p>Prof. Dr. Bülent Aydemir için iki dilli (TR/EN), yönetim panelli akademik site: yayınlar, dersler, seminerler ve şifreli ders notları. Güvenli giriş, hız sınırı ve süreli dosya bağlantılarıyla.</p>
+          <a class="live" href="https://bulentaydemir.com" target="_blank" rel="noopener">Siteyi aç ↗</a>
         </div>
       </div>
       <div class="site wide">
+        <div class="pair">
+          <img src="img/yemek-ana.jpg" alt="Yemek Günlüğüm ana sayfa">
+          <img src="img/yemek-tarif.jpg" alt="Yemek Günlüğüm tarif sayfası">
+        </div>
         <div class="in">
           <h3>Yemek Günlüğüm</h3>
-          <p>Uzun yıllardır yayında olan bir yemek blogunun yeniden yapımı. Eski blogdaki tarifleri, görselleri ve okur yorumlarını otomatik taşıyan bir veri aktarım hattı yazdım; site yeni tasarımla yeniden kuruldu, yorum yönetimi için bir panel ve bir mobil uygulama eklendi.</p>
+          <p>Uzun yıllardır yayında olan bir yemek blogunun yeniden yapımı. Eski blogdaki tarifleri, görselleri ve okur yorumlarını otomatik taşıyan bir veri aktarım hattı yazdım; site yeni tasarımla yeniden kuruldu, pişirme modu, favoriler ve arama eklendi; yorum yönetimi için bir panel ve bir mobil uygulama geliştirdim.</p>
         </div>
       </div>
     </div>
