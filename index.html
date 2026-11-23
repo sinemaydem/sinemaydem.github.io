@@ -28,6 +28,7 @@
   a { color: inherit; }
   img { max-width: 100%; display: block; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 12px; }
@@ -37,10 +38,10 @@
   nav .links a:hover { color: var(--ink); }
   .theme { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 8px; width: 34px; height: 34px; cursor: pointer; font-size: 15px; }
 
-  .hero { padding: 72px 0 72px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+  .hero { padding: 72px 0; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
   .eyebrow { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; }
   h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.05; margin: 10px 0 16px; letter-spacing: -1.5px; }
-  .lead { font-size: 18px; color: var(--muted); max-width: 620px; margin: 0; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0; }
   .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 10px; font-weight: 600; font-size: 14px; text-decoration: none; border: 1px solid var(--line); background: var(--surface); }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -52,15 +53,18 @@
   section { padding-bottom: 64px; }
 
   .project { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow); }
-  .p-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
+  .p-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .p-title { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .logo { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px 14px; height: 60px; display: flex; align-items: center; }
+  .logo img { height: 100%; width: auto; }
   .p-head h3 { margin: 0; font-size: 24px; letter-spacing: -.4px; }
-  .p-head .tag { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .p-head .tag { color: var(--muted); font-size: 14px; }
   .live { font-size: 13px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 6px 12px; border-radius: 999px; text-decoration: none; white-space: nowrap; }
-  .p-body { display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px; margin-top: 20px; }
+  .p-body { display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px; margin-top: 22px; }
   .p-body h4 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
-  .p-body p { margin: 0 0 14px; }
-  .p-body ul { margin: 0 0 14px; padding-left: 18px; }
-  .p-body li { margin: 4px 0; }
+  .p-body p { margin: 0 0 16px; }
+  .p-body ul { margin: 0 0 16px; padding-left: 18px; }
+  .p-body li { margin: 5px 0; }
 
   .shots { display: grid; gap: 10px; align-content: start; }
   .shots .main { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); cursor: zoom-in; }
@@ -76,9 +80,6 @@
   .site .in { padding: 18px 20px 20px; display: flex; flex-direction: column; align-items: flex-start; flex: 1; }
   .site h3 { margin: 0 0 4px; font-size: 18px; }
   .site p { margin: 0 0 14px; color: var(--muted); font-size: 14.5px; flex: 1; }
-  .site.wide { grid-column: 1 / -1; }
-  .site .pair { display: grid; grid-template-columns: 1fr 1fr; }
-  .site .pair img + img { border-left: 1px solid var(--line); }
 
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
@@ -99,6 +100,7 @@
     .avatar { width: 130px; height: 130px; order: -1; }
     .p-body, .sites, .grid2 { grid-template-columns: 1fr; }
     .project { padding: 20px; }
+    .logo { height: 50px; }
     nav .links a.hide-sm { display: none; }
   }
 </style>
@@ -110,7 +112,7 @@
     <a class="brand" href="#">Sinem Aydemir</a>
     <div class="links">
       <a href="#projeler">Projeler</a>
-      <a class="hide-sm" href="#web">Web</a>
+      <a class="hide-sm" href="#web">Web siteleri</a>
       <a class="hide-sm" href="#arastirma">Araştırma</a>
       <a href="Sinem_Aydemir_CV_2026_TR.pdf">CV</a>
       <button class="theme" id="theme" aria-label="Temayı değiştir">◐</button>
@@ -122,8 +124,8 @@
   <header class="hero">
     <div>
       <div class="eyebrow">Full Stack Developer · İstanbul</div>
-      <h1>Gerçek işletmeler için uçtan uca ürünler geliştiriyorum.</h1>
-      <p class="lead">Web, mobil ve backend katmanlarında çalışıyorum. ALO GRUP'ta Alo Nexus platformunu ve 7 şirketin ortak kullandığı proje yönetim sistemini sıfırdan kurup canlıya aldım. Siber güvenlik geçmişimle veri izolasyonu ve yetkilendirmeyi tasarımın merkezine koyuyorum.</p>
+      <h1>Gerçek ihtiyaçlar için uçtan uca ürünler geliştiriyorum.</h1>
+      <p class="lead">Web arayüzünden mobil uygulamaya, sunucudan veritabanına kadar ürünün her katmanında çalışıyorum. ALO GRUP'ta Alo Nexus platformunu ve grubun yedi şirketinin ortak kullandığı soji'yi sıfırdan geliştirip kullanıma aldım. Siber güvenlik eğitimimden gelen bakışla veri güvenliğini ve yetkilendirmeyi her projenin temeline koyuyorum.</p>
       <div class="cta">
         <a class="btn primary" href="mailto:sinem0aydemir@gmail.com">İletişime geç</a>
         <a class="btn" href="Sinem_Aydemir_CV_2026_TR.pdf">CV'yi indir</a>
@@ -136,27 +138,30 @@
 
   <section id="projeler">
     <h2>Öne çıkan projeler</h2>
-    <p class="section-sub">Görsellere tıklayarak büyütebilirsiniz.</p>
+    <p class="section-sub">Fikir aşamasından canlı kullanıma kadar geliştirdiğim ürünler. Görselleri büyütmek için üzerlerine tıklayabilirsiniz.</p>
 
     <article class="project">
       <div class="p-head">
-        <div><h3>Alo Nexus</h3><div class="tag">Site yönetimi, güvenlik eğitimi ve güvenlik operasyonları için tek platform</div></div>
+        <div class="p-title">
+          <div class="logo"><img src="img/logo-nexus.png" alt="Alo Nexus logosu"></div>
+          <div><h3 class="sr">Alo Nexus</h3><div class="tag">Site yönetimi ve güvenlik operasyonları için entegre platform</div></div>
+        </div>
         <a class="live" href="https://alonexus.com" target="_blank" rel="noopener">alonexus.com ↗</a>
       </div>
       <div class="p-body">
         <div>
-          <h4>Kapsam</h4>
-          <p>Tek API, yönetici web paneli ve iOS/Android mobil uygulamadan oluşan platform. Güvenlik görevlileri, site sakinleri, eğitim kurumları ve yönetim ofisi aynı sistemde çalışıyor.</p>
+          <h4>Nedir?</h4>
+          <p>Alo Nexus; güvenlik görevlilerini, site sakinlerini ve yönetim ofisini tek bir sistemde buluşturuyor. Platform; ortak bir API, yönetici web paneli ve iOS ile Android'de çalışan mobil uygulamalardan oluşuyor.</p>
           <h4>Öne çıkanlar</h4>
           <ul>
-            <li><b>Canlı takip ve devriye:</b> nöbetteki görevlilerin harita üzerinde konumu, QR kontrol noktaları, sıra ve konum (geofence) doğrulaması, otomatik tur planlama, internet yokken cihazda okutma kuyruğu</li>
-            <li><b>Finans:</b> aidat tahakkuku ve tahsilatı, borçlu daire takibi, dekont onayı, kasa ve banka özeti</li>
-            <li><b>Site yaşamı:</b> talepler, ziyaretçi ve kargo, rezervasyon, anketler, hedefli duyurular ve push bildirimleri</li>
-            <li><b>Güvenlik:</b> izin tabanlı roller, KVKK kapsamında şifreli kişisel veri, şirketler arası veri izolasyonu</li>
+            <li><b>Canlı takip ve devriye:</b> Nöbetteki görevliler harita üzerinde anlık izleniyor. Devriyeler QR kontrol noktaları, sıra ve konum (geofence) doğrulamasıyla yürütülüyor; turlar otomatik planlanıyor, internet olmadığında okutmalar cihazda bekletilip bağlantı gelince gönderiliyor.</li>
+            <li><b>Finans:</b> Aidat tahakkuku ve tahsilatı, borçlu daire takibi, dekont onayı, kasa ve banka özeti tek ekranda.</li>
+            <li><b>Site yaşamı:</b> Talepler, ziyaretçi ve kargo kayıtları, ortak alan rezervasyonu, anketler, hedefli duyurular ve push bildirimleri.</li>
+            <li><b>Güvenlik:</b> İzin tabanlı rol sistemi, KVKK kapsamında şifrelenen kişisel veriler ve şirketler arası veri izolasyonu.</li>
           </ul>
         </div>
         <div class="shots">
-          <img class="main" src="img/site-nexus-light.jpg" alt="alonexus.com ana sayfa">
+          <img class="main" src="img/site-nexus-light.jpg" alt="alonexus.com ana sayfası">
           <div class="thumbs">
             <img src="img/nexus-canli-takip.jpg" alt="Alo Nexus yönetim paneli: canlı takip haritası">
             <img src="img/nexus-ozet.jpg" alt="Alo Nexus yönetim paneli: özet ekranı">
@@ -168,27 +173,30 @@
 
     <article class="project">
       <div class="p-head">
-        <div><h3>soji</h3><div class="tag">ALO GRUP için çok şirketli proje, görev ve haftalık iş planı platformu</div></div>
-        <span class="live">● Grup içinde aktif kullanımda</span>
+        <div class="p-title">
+          <div class="logo"><img src="img/logo-soji.png" alt="soji logosu"></div>
+          <div><h3 class="sr">soji</h3><div class="tag">ALO GRUP şirketleri için proje, görev ve haftalık iş planı platformu</div></div>
+        </div>
+        <span class="live">● Grup genelinde kullanımda</span>
       </div>
       <div class="p-body">
         <div>
           <h4>Problem</h4>
-          <p>Grup şirketlerinin ekipleri haftalık işlerini ayrı Excel dosyalarında tutuyordu. Kimin ne üzerinde çalıştığı, hangi işin kaç haftadır sürüklendiği görünmüyordu.</p>
-          <h4>Ne yaptım</h4>
+          <p>Grup şirketlerinin ekipleri haftalık işlerini ayrı Excel dosyalarında takip ediyordu. Kimin hangi iş üzerinde çalıştığı ve hangi işlerin haftalardır ertelendiği görünmüyordu.</p>
+          <h4>Çözüm</h4>
           <ul>
-            <li>Pano (sürükle-bırak), liste, tablo, takvim ve zaman çizelgesi görünümleri</li>
-            <li>Tamamlanmayan işlerin her pazartesi otomatik devri ve "N hafta devredildi" takibi</li>
-            <li>Rutin işler, toplantı tutanakları (PDF/Excel çıktısı), ekip iş yükü dashboard'u</li>
-            <li>Eski Excel listelerini görevlere dönüştüren içe aktarma aracı</li>
+            <li><b>Görünümler:</b> Pano (sürükle-bırak), liste, tablo, takvim ve zaman çizelgesi.</li>
+            <li><b>Haftalık plan:</b> Tamamlanmayan işler her pazartesi otomatik olarak yeni haftaya aktarılıyor; kaç hafta ertelendikleri kartın üzerinde görünüyor.</li>
+            <li><b>Ekip takibi:</b> Rutin işler, toplantı tutanakları (PDF ve Excel çıktısı) ve ekip iş yükü paneli.</li>
+            <li><b>Geçiş:</b> Ekiplerin eski Excel listelerini görevlere dönüştüren bir içe aktarma aracı.</li>
           </ul>
           <h4>Güvenlik</h4>
-          <p>Yetki kararları arayüzde değil veritabanında veriliyor. Biri API'ye doğrudan istek atsa bile başka şirketin verisini göremez; 4 rollü yetki modeli otomatik testlerle doğrulanıyor.</p>
+          <p>Yetki kontrolü arayüzde değil, veritabanı katmanında yapılıyor. API'ye doğrudan istek atılsa bile başka bir şirketin verisine erişilemiyor; dört rollü yetki modeli otomatik testlerle doğrulanıyor.</p>
         </div>
         <div class="shots">
-          <img class="main" src="img/soji-dashboard.jpg" alt="soji giriş ekranı: Bugün">
+          <img class="main" src="img/soji-dashboard.jpg" alt="soji giriş ekranı">
           <div class="thumbs">
-            <img src="img/soji-kanban.jpg" alt="soji proje panosu (Kanban)">
+            <img src="img/soji-kanban.jpg" alt="soji proje panosu">
             <img src="img/soji-weekly.jpg" alt="soji haftalık iş planı">
           </div>
           <div class="note">Ekran görüntüleri kurgusal demo verisiyle alınmıştır.</div>
@@ -198,24 +206,26 @@
 
     <article class="project">
       <div class="p-head">
-        <div><h3>Vardiya</h3><div class="tag">Özel güvenlik görevlileri için karar ve kariyer oyunu</div></div>
+        <div class="p-title">
+          <div><h3>Vardiya</h3><div class="tag">Özel güvenlik görevlileri için karar ve kariyer oyunu</div></div>
+        </div>
         <span class="live">Mobil uyumlu web oyunu</span>
       </div>
       <div class="p-body">
         <div>
           <h4>Fikir</h4>
-          <p>Güvenlik eğitimi alan adayların sahada karşılaşacakları durumları oynayarak öğrenmesi için tasarladığım bir oyun. Oyuncu okul, banka, gece kulübü gibi görev yerlerinde kararlar veriyor; her karar 5188 sayılı Kanun ve ilgili mevzuata göre değerlendiriliyor.</p>
+          <p>Güvenlik eğitimi alan adayların sahada karşılaşacakları durumları oynayarak öğrenmeleri için tasarladığım bir oyun. Oyuncu okul, banka ve gece kulübü gibi görev yerlerinde kararlar veriyor; her karar 5188 sayılı Kanun ve ilgili mevzuata göre değerlendiriliyor.</p>
           <h4>Öne çıkanlar</h4>
           <ul>
-            <li>Sağlık, hukuki sicil, işveren, kamu güveni ve moral dengesine dayalı kariyer sistemi; 18 başarım ve farklı sonlar</li>
-            <li>El detektörü, X-ray bagaj, kimlik kontrolü ve kamera odası gibi etkileşimli cihaz mini oyunları</li>
-            <li>Eğitim kurumları için öğrenme modu: her kararın hukuki değerlendirmesi anında gösteriliyor</li>
-            <li>Tüm içerik veri dosyalarından geliyor; otomatik doğrulama ve 10.000 kariyerlik denge simülasyonuyla test ediliyor</li>
-            <li>Telefona kurulabilir, internetsiz çalışacak şekilde tasarlandı</li>
+            <li><b>Kariyer sistemi:</b> Sağlık, hukuki sicil, işveren memnuniyeti, kamu güveni ve moral arasında denge kuruluyor; 18 başarım ve farklı sonlar var.</li>
+            <li><b>Mini oyunlar:</b> El detektörü, X-ray bagaj kontrolü, kimlik kontrolü ve kamera odası gibi etkileşimli cihazlar.</li>
+            <li><b>Öğrenme modu:</b> Eğitim kurumları için her kararın hukuki değerlendirmesi anında gösteriliyor.</li>
+            <li><b>Test edilebilir içerik:</b> Tüm senaryolar veri dosyalarından geliyor; otomatik doğrulama ve 10.000 kariyerlik denge simülasyonuyla test ediliyor.</li>
+            <li><b>Çevrimdışı kullanım:</b> Telefona uygulama gibi kurulabiliyor ve internet olmadan da çalışacak şekilde tasarlandı.</li>
           </ul>
         </div>
         <div class="shots phone">
-          <img src="img/oyun-menu.jpg" alt="Vardiya ana menü">
+          <img src="img/oyun-menu.jpg" alt="Vardiya ana menüsü">
           <img src="img/oyun-lokasyon.jpg" alt="Vardiya görev yeri seçimi">
         </div>
       </div>
@@ -224,48 +234,38 @@
 
   <section id="web">
     <h2>Web siteleri, SEO ve GEO</h2>
-    <p class="section-sub">Tasarım, geliştirme, teknik SEO ve yapay zeka aramaları için içerik optimizasyonu.</p>
+    <p class="section-sub">Tasarımını ve geliştirmesini yaptığım siteler. Teknik SEO'nun yanı sıra yapay zeka arama motorları için içerik optimizasyonu (GEO) da yapıyorum.</p>
     <div class="sites">
       <div class="site">
-        <img src="img/site-nexus-light.jpg" alt="alonexus.com ana sayfa">
+        <img src="img/site-nexus-light.jpg" alt="alonexus.com ana sayfası">
         <div class="in">
           <h3>alonexus.com</h3>
-          <p>Alo Nexus ürün sitesi: güvenlik ve yaşam uygulamalarının ve yönetim panelinin tanıtımı, demo talep akışı.</p>
+          <p>Alo Nexus'un ürün sitesi. Güvenlik ve yaşam uygulamalarını ve yönetim panelini tanıtıyor; demo talebi buradan alınıyor.</p>
           <a class="live" href="https://alonexus.com" target="_blank" rel="noopener">Siteyi aç ↗</a>
         </div>
       </div>
       <div class="site">
-        <img src="img/site-alogrup.jpg" alt="alogrup.com ana sayfa">
+        <img src="img/site-alogrup.jpg" alt="alogrup.com ana sayfası">
         <div class="in">
           <h3>alogrup.com</h3>
-          <p>ALO GRUP kurumsal sitesi: yedi markayı tek çatı altında tanıtan şirket kartları, kariyer ve e-katalog sayfaları.</p>
+          <p>ALO GRUP'un kurumsal sitesi. Grubun yedi markasını tek çatı altında tanıtıyor; kariyer ve e-katalog sayfalarını içeriyor.</p>
           <a class="live" href="https://alogrup.com" target="_blank" rel="noopener">Siteyi aç ↗</a>
         </div>
       </div>
       <div class="site">
-        <img src="img/site-3g.jpg" alt="3gguvenlik.com ana sayfa">
+        <img src="img/site-3g.jpg" alt="3gguvenlik.com ana sayfası">
         <div class="in">
           <h3>3gguvenlik.com</h3>
-          <p>Özel güvenlik eğitim merkezi sitesi: online ön kayıt, sınav simülatörü, ilçe bazlı açılış sayfaları. SEO altyapısı sıfırdan kuruldu; "güvenlik kursu" aramasında yapay zeka sonuçlarında 1. sıra.</p>
+          <p>Özel güvenlik eğitim merkezinin sitesi: Online ön kayıt, sınav simülatörü ve ilçe bazlı sayfalar. SEO altyapısını sıfırdan kurdum; site "güvenlik kursu" aramasında yapay zeka sonuçlarında 1. sıraya yükseldi.</p>
           <a class="live" href="https://3gguvenlik.com" target="_blank" rel="noopener">Siteyi aç ↗</a>
         </div>
       </div>
       <div class="site">
-        <img src="img/site-bulent.jpg" alt="bulentaydemir.com ana sayfa">
+        <img src="img/site-bulent.jpg" alt="bulentaydemir.com ana sayfası">
         <div class="in">
           <h3>bulentaydemir.com</h3>
-          <p>Prof. Dr. Bülent Aydemir için iki dilli (TR/EN), yönetim panelli akademik site: yayınlar, dersler, seminerler ve şifreli ders notları. Güvenli giriş, hız sınırı ve süreli dosya bağlantılarıyla.</p>
+          <p>Prof. Dr. Bülent Aydemir için Türkçe ve İngilizce akademik site. Yayınlar, dersler ve seminerler yönetim panelinden güncelleniyor; ders notları şifreli olarak paylaşılıyor.</p>
           <a class="live" href="https://bulentaydemir.com" target="_blank" rel="noopener">Siteyi aç ↗</a>
-        </div>
-      </div>
-      <div class="site wide">
-        <div class="pair">
-          <img src="img/yemek-ana.jpg" alt="Yemek Günlüğüm ana sayfa">
-          <img src="img/yemek-tarif.jpg" alt="Yemek Günlüğüm tarif sayfası">
-        </div>
-        <div class="in">
-          <h3>Yemek Günlüğüm</h3>
-          <p>Uzun yıllardır yayında olan bir yemek blogunun yeniden yapımı. Eski blogdaki tarifleri, görselleri ve okur yorumlarını otomatik taşıyan bir veri aktarım hattı yazdım; site yeni tasarımla yeniden kuruldu, pişirme modu, favoriler ve arama eklendi; yorum yönetimi için bir panel ve bir mobil uygulama geliştirdim.</p>
         </div>
       </div>
     </div>
@@ -273,16 +273,16 @@
 
   <section id="arastirma">
     <h2>Araştırma ve yapay zeka</h2>
-    <p class="section-sub">Marmara Üniversitesi Bilgisayar Mühendisliği tezli yüksek lisans · Siber Güvenlik yüksek lisans mezunu</p>
+    <p class="section-sub">Marmara Üniversitesi'nde Bilgisayar Mühendisliği tezli yüksek lisansıma devam ediyorum; Siber Güvenlik yüksek lisansını tamamladım.</p>
     <div class="grid2">
       <div class="card">
         <h3>Machine Learning in IIoT Cybersecurity</h3>
-        <p>IDAP'26 – 10th International Artificial Intelligence and Data Processing Symposium. CIC-IIoT-2025 veri setinde yedi ML algoritmasının doğruluk ve tahmin hızı karşılaştırması.</p>
-        <span class="metric">RF %94.56 F1 · DT ~51× daha hızlı</span>
+        <p>IDAP'26 (10th International Artificial Intelligence and Data Processing Symposium) bildirisi. CIC-IIoT-2025 veri setinde yedi makine öğrenmesi algoritmasını doğruluk ve tahmin hızı açısından karşılaştırdım.</p>
+        <span class="metric">Random Forest %94,56 F1 · Decision Tree ~51 kat daha hızlı</span>
       </div>
       <div class="card">
         <h3>Yapay Zeka Mühendisi · CoreSynapse</h3>
-        <p>Çalışan izleme sisteminin karar destek modülünü canlıya aldım; alarm sistemlerinde yanlış pozitifleri azaltmak için model geliştirme ve eşik optimizasyonu yaptım.</p>
+        <p>Çalışan izleme sisteminin karar destek modülünü geliştirip canlıya aldım. Alarm sistemlerindeki yanlış pozitifleri azaltmak için model geliştirme ve eşik optimizasyonu yaptım.</p>
       </div>
     </div>
   </section>
